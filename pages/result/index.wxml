@@ -1,0 +1,4 @@
+<view>
+  <view>单词词汇量:{{scores}}</view>
+</view>
+  

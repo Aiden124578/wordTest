@@ -1,0 +1,61 @@
+<view class="index">
+  <view class="userinfo_index">
+    <!-- 背景图片 -->
+    <view class="bgc_photo">
+      <image src="../../images/main_pic.png" />
+    </view>
+    <view class="container">
+      <view class="userinfo">
+        <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
+          <view class="userinfo-avatar">
+            <open-data type="userAvatarUrl"></open-data>
+          </view>
+          <view class="userinfo-nickname">
+            <open-data type="userNickName"></open-data>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 测试 -->
+  <view class="test_index">
+    <!-- 标题 -->
+    <view class="test_title">测试等级</view>
+    <!-- 等级 -->
+    <view class="test_rank">
+      <view class="rank">
+        <view bindtap="handleClickChange" data-index="1" class="pick_rank {{index==1?'active':''}}">
+          初中
+        </view>
+        <view bindtap="handleClickChange" data-index="2" class="pick_rank {{index==2?'active':''}}">
+          高中
+        </view>
+        <view bindtap="handleClickChange" data-index="3" class="pick_rank {{index==3?'active':''}}">
+          大学
+        </view>
+        <view bindtap="handleClickChange" data-index="4" class="pick_rank {{index==4?'active':''}}">
+          四级
+        </view>
+        <view bindtap="handleClickChange" data-index="5" class="pick_rank {{index==5?'active':''}}">
+          六级
+        </view>
+        <view class="iconfont icon-right" bindtap="swapNav"></view>
+      </view>
+    </view>
+    <!-- 历史记录 -->
+    <view class="history_index">
+      <!-- 标题 -->
+      <view class="history_title">历史记录</view>
+      <!-- 历史数据 -->
+      <view class="history_item">
+        <view class="history_data">暂无历史记录，快去测试吧~</view>
+        </view>
+    </view>
+    <!-- 联系我们 -->
+    <view class="contact_item">V1.0 | 联系我们</view>
+    <!-- 开始测试 -->
+    <view class="test_word">
+      <view class="start_test" bindtap="startTest">开始测试</view>
+    </view>
+  </view>
+</view>

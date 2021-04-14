@@ -39,6 +39,7 @@
   left: 50rpx;
   font-size: 28rpx;
   color: #4a4a4a;
+  font-weight: 700;
 }
 .bgc {
   width: 50rpx;
@@ -57,24 +58,40 @@
   font-size: 32rpx;
   margin: 50rpx 0 40rpx 30rpx;
   color: #4a4a4a;
+  font-weight: 700;
 }
 .test_index .rank {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   width: 100%;
-  height: 100rpx;
+  height: 150rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 10rpx solid #f1f1f1;
+}
+.test_index .rank .scroll-view_H {
+  white-space: nowrap;
 }
 .test_index .rank .pick_rank {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100rpx;
+  display: inline-block;
+  text-align: center;
+  width: 14%;
   height: 100rpx;
   font-size: 32rpx;
   color: #fff;
   border-radius: 27rpx;
-  margin-left: 30rpx;
+  margin-left: 35rpx;
   background-color: #9dacbf;
+}
+.test_index .rank .pick_rank:nth-of-type(6) {
+  margin-right: 35rpx;
+}
+.test_index .rank .pick_rank .grade {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .test_index .rank .unpick_rank {
   display: flex;
@@ -88,19 +105,15 @@
   border-radius: 27rpx;
   margin-left: 30rpx;
 }
-.test_index .rank .icon-right {
-  font-size: 65rpx;
-  margin-left: 20rpx;
-}
 .test_index .history_index {
   width: 100%;
-  height: 300rpx;
   color: #4a4a4a;
   margin-top: 30rpx;
 }
 .test_index .history_index .history_title {
   font-size: 32rpx;
-  margin: 50rpx 0 40rpx 30rpx;
+  margin: 40rpx 0 40rpx 30rpx;
+  font-weight: 700;
 }
 .test_index .history_index .history_item {
   display: flex;
@@ -118,15 +131,34 @@
   border: 2rpx solid var(--themeColor);
   border-radius: 27rpx;
 }
+.test_index .history_index .history_item .history_reality_data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #4a4a4a;
+  font-size: 28rpx;
+  width: 680rpx;
+  height: 110rpx;
+  border: 2rpx solid var(--themeColor);
+  border-radius: 27rpx;
+  padding: 0 30rpx;
+}
+.test_index .history_index .history_item .history_reality_data .test_data {
+  display: flex;
+  align-items: center;
+}
+.test_index .history_index .history_item .history_reality_data .test_data .icon-right {
+  font-size: 38rpx;
+  margin-left: 5rpx;
+}
 .test_index .contact_item {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 130rpx;
   font-size: 32rpx;
   color: var(--themeColor);
-  padding-bottom: 100rpx;
+  margin: 80rpx 0;
 }
 .test_index .test_word {
   display: flex;

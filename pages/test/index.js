@@ -9,9 +9,10 @@ Page({
     meanData: [],  //单词选项意思,
     scores:'',  //单词得分
     type:'', //词汇量等级
-    selectWordID:[], //选项词汇量对否ID
-    wordID:'', //单词正确ID
-    wordid:'', //选项单词ID
+    wordID:'', //单词正确的id
+    selectwordID:[], //单词选项的id
+    wordid:'', //选中选项的id
+    flag:'', //ABCD的显隐
     result:{},
     userInfo: {},
     hasUserInfo: false,
@@ -117,15 +118,18 @@ Page({
     let audio = JSON.parse(this.data.wordsData[this.data.number - 1].voice).ph_tts_mp3
     let meanData = this.data.wordsData[this.data.number - 1].selection
     let wordID = this.data.wordsData[this.data.number - 1].meanss[0].wordId
+    let selectwordID = this.data.wordsData[this.data.number - 1].selection.map(item=>item.wordId)
     this.setData({
       word,
       meanData,
       audio,
-      wordID
+      wordID,
+      selectwordID
     })
     console.log(this.data.word)
     console.log(this.data.meanData)
     console.log(this.data.wordID)
+    console.log(this.data.selectwordID)
     // console.log(this.data.audio)
   },
 
@@ -302,7 +306,7 @@ Page({
     wx.setStorageSync('scores',that.data.scores);
     console.log(that.data.scores)
     //答完所有题目，跳转至词汇量测试结果页面
-    wx.navigateTo({url:'../result/index'})
+    wx.navigateTo({url:'../index/index'})
     
     //   // 与页面衔接  触发页面中的方法并传数据
     //   counts[4] = count;
@@ -366,23 +370,30 @@ Page({
       number = number + 1;
       // this.getPictureData(this.data.random[number - 1]);
       that.setData({
-        wordsData: that.data.resultData[number - 1],
-        wordID:that.data.resultData[number - 1].meanss[0].wordId
+        wordsData: that.data.resultData[number - 1]
       })
       // console.log(that.data.wordsData)
 
       let word = that.data.wordsData.word
       let meanData = that.data.wordsData.selection
       let audio = JSON.parse(that.data.wordsData.voice).ph_tts_mp3
+      let wordID = this.data.wordsData.meanss[0].wordId
+      let selectwordID = this.data.wordsData.selection.map(item=>item.wordId)
       that.setData({
         word,
         meanData,
-        audio
+        audio,
+        wordID,
+        selectwordID
       })
       console.log(that.data.word)
       console.log(that.data.meanData)
 
       url = '#';
+
+      //英语音频
+      this.audioCtx = wx.createAudioContext('myAudio')
+      this.audioCtx.play()
     } else {
       // var count = app.globalData.count + 1;
       var nowDate = new Date();
@@ -409,16 +420,13 @@ Page({
       value: 0,
     })
     // console.log("update函数成功执行!")
-    //英语音频
-    this.audioCtx = wx.createAudioContext('myAudio')
-    this.audioCtx.play()
   },
 
   //实时更新单选框的状态
   radioEvent: function (e) {
     // console.log(e);
     var index = e.currentTarget.dataset.index;//获取当前点击的下标
-    var wordid = e.currentTarget.dataset.wordid;//获取当前点击的下标
+    var wordid = e.currentTarget.dataset.wordid;//获取当前点击的单词id
     var value = this.data.value;
     // console.log(value);
     // console.log(index);
@@ -432,8 +440,10 @@ Page({
     this.setData({
       radios: radios,
       value: value,
-      wordid
+      wordid,
+      flag:'flag'
     });
+    console.log(this.data.wordid)
   },
 
   //获得答案

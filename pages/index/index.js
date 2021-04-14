@@ -10,7 +10,8 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需尝试获取用户信息可改为false
-    index:1 //默认选中的等级
+    index:1, //默认选中的等级
+    score:''
   },
   // 事件处理函数
   bindViewTap() {
@@ -19,6 +20,7 @@ Page({
     })
   },
   onLoad() {
+    // 判断用户是否授权
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -30,6 +32,11 @@ Page({
       backgroundColorTop: '#d8e4f4',
       backgroundColorBottom: '#fff'
     });
+    // 从缓存中获取测试分数
+    let scores = wx.getStorageSync('scores');
+    this.setData({
+      scores
+    })
   },
 
   //获取用户信息
@@ -57,6 +64,7 @@ Page({
 
   // 点击等级更换颜色
   handleClickChange(e) {
+    // console.log(e)
     var { index } = e.currentTarget.dataset;
     this.setData({
       index
@@ -70,7 +78,4 @@ Page({
     })
   },
 
-  swapNav(e){
-    console.log(e)
-  }
 })

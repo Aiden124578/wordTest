@@ -64,7 +64,7 @@
         <view class="history_reality_data">
           <view class="test_date">2021年04月</view>
           <view class="test_data">
-            <view class="test_score">单词量{{scores}}</view>
+            <view class="test_score"><text>单词量</text>{{scores}}</view>
           </view>
         </view>
       </view>

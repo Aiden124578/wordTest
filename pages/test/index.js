@@ -5,15 +5,15 @@ Page({
   data: {
     wordsData: [],  //单词接口数据
     word: '',  //单词title
-    audio:'', //单词发音
+    audio: '', //单词发音
     meanData: [],  //单词选项意思,
-    scores:'',  //单词得分
-    type:'', //词汇量等级
-    wordID:'', //单词正确的id
-    selectwordID:[], //单词选项的id
-    wordid:'', //选中选项的id
-    flag:'', //ABCD的显隐
-    result:{},
+    scores: 0,  //单词得分
+    type: '', //词汇量等级
+    wordID: '', //单词正确的id
+    selectwordID: [], //单词选项的id
+    wordid: '', //选中选项的id
+    visible: '', //ABCD的显隐
+    result: {},
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -86,7 +86,7 @@ Page({
   onLoad(option) {
     //获取等级数据
     this.setData({
-      type:option.type
+      type: option.type
     })
     // 获取用户的信息
     if (wx.getUserProfile) {
@@ -98,7 +98,7 @@ Page({
     this.wordsData()
   },
 
-  onShow(){
+  onShow() {
     this.audioCtx = wx.createAudioContext('myAudio')
     this.audioCtx.play()
   },
@@ -111,14 +111,14 @@ Page({
     this.setData({
       wordsData: res.data,
       resultData: res.data,
-      result:res
+      result: res
     })
     console.log(this.data.wordsData)
     let word = this.data.wordsData[this.data.number - 1].word
     let audio = JSON.parse(this.data.wordsData[this.data.number - 1].voice).ph_tts_mp3
     let meanData = this.data.wordsData[this.data.number - 1].selection
     let wordID = this.data.wordsData[this.data.number - 1].meanss[0].wordId
-    let selectwordID = this.data.wordsData[this.data.number - 1].selection.map(item=>item.wordId)
+    let selectwordID = this.data.wordsData[this.data.number - 1].selection.map(item => item.wordId)
     this.setData({
       word,
       meanData,
@@ -128,8 +128,8 @@ Page({
     })
     console.log(this.data.word)
     console.log(this.data.meanData)
-    console.log(this.data.wordID)
-    console.log(this.data.selectwordID)
+    // console.log(this.data.wordID)
+    // console.log(this.data.selectwordID)
     // console.log(this.data.audio)
   },
 
@@ -204,18 +204,19 @@ Page({
     var that = this;
     var radios = that.data.radios;
     var flags = 0;
+
     //如果没有选择答案，弹出提示
-    for (var i = 0; i < 4; i++) {
-      if (!radios[i].check) {
-        flags = flags + 1;
-      }
-    }
-    if (flags == 4) {
-      wx.showToast({
-        title: '请选择答案',
-      })
-      return;
-    }
+    // for (var i = 0; i < 4; i++) {
+    //   if (!radios[i].check) {
+    //     flags = flags + 1;
+    //   }
+    // }
+    // if (flags == 4) {
+    //   wx.showToast({
+    //     title: '请选择答案',
+    //   })
+    //   return;
+    // }
     //获取题目及答案
     var number = that.data.number;
     var title = that.data.random[number - 1];
@@ -274,83 +275,86 @@ Page({
       console.log("您答错了！");
     }
     this.update();
-    // that.setData({
-    //   count: count,
-    // })
     var flags = that.data.flag;
     //最后一题答完,跳转到结果页面
     if (flags == 1) {
-    //停止播放英语音频
-    this.audioCtx = wx.createAudioContext('myAudio')
-    this.audioCtx.pause()
+      //停止播放英语音频
+      this.audioCtx = wx.createAudioContext('myAudio')
+      this.audioCtx.pause()
 
       console.log("答完了")
       var active = 'tabs[2].isActive'
       var noactive = 'tabs[1].isActive'
       that.setData({
-        [active]:true,
-        [noactive]:false
+        [active]: true,
+        [noactive]: false,
+        visible: 'flag'
       })
       var results = that.data.result.data
       // console.log(results)
       // 请求结果接口
-      const res = await request({ 
-        url: "/words/result", 
+      const res = await request({
+        url: "/words/result",
         method: "POST",
-        data:results
-    })
-    // console.log(res)
-    that.setData({
-      scores:res.data.scores
-    })
-    wx.setStorageSync('scores',that.data.scores);
-    console.log(that.data.scores)
-    //答完所有题目，跳转至词汇量测试结果页面
-    wx.navigateTo({url:'../index/index'})
-    
-    //   // 与页面衔接  触发页面中的方法并传数据
-    //   counts[4] = count;
-    //   var min = that.data.min;
-    //   counts[5] = min;
-    //   that.setData({
-    //     counts: counts,
-    //   })
-    //   that.triggerEvent('showTab', that.data.counts);
-    //   //答完所有题目，跳转至保密测试结果页面
-    //   wx.navigateTo({
-    //     url: '../result2/index',
-    //     success() {
-    //       let dateTime;
-    //       const timestamp = Date.parse(new Date());
-    //       const date = new Date(timestamp);
-    //       //获取年份  
-    //       const Y = date.getFullYear();
-    //       //获取月份  
-    //       const M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
-    //       //获取当日日期 
-    //       const D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-    //       //获取时
-    //       // const hour = date.getHours()
-    //       //获取分
-    //       // const minute = date.getMinutes()
-    //       that.setData({
-    //         dateTime: Y + '年' + M + '月' + D + '日'
-    //       })
-    //       // 调用云函数examNum添加答题数目到数据库exam表
-    //       DB.add({
-    //         data: {
-    //           countNumber: that.data.count,
-    //           date: that.data.dateTime,
-    //           min:that.data.min
-    //         }, success(res) {
-    //           console.log("添加成功", res)
-    //         }, fail(err) {
-    //           console.log("添加失败", err)
-    //         }
-    //       })
-    //     }
-    //   })
+        data: results
+      })
+      // console.log(res)
+      that.setData({
+        scores: res.data.scores
+      })
+      wx.setStorageSync('scores', that.data.scores);
+      console.log(that.data.scores)
+      //答完所有题目，跳转至词汇量测试结果页面
+      wx.navigateTo({ url: '../index/index' })
+
+      //   // 与页面衔接  触发页面中的方法并传数据
+      //   counts[4] = count;
+      //   var min = that.data.min;
+      //   counts[5] = min;
+      //   that.setData({
+      //     counts: counts,
+      //   })
+      //   that.triggerEvent('showTab', that.data.counts);
+      //   //答完所有题目，跳转至保密测试结果页面
+      //   wx.navigateTo({
+      //     url: '../result2/index',
+      //     success() {
+      //       let dateTime;
+      //       const timestamp = Date.parse(new Date());
+      //       const date = new Date(timestamp);
+      //       //获取年份  
+      //       const Y = date.getFullYear();
+      //       //获取月份  
+      //       const M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+      //       //获取当日日期 
+      //       const D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      //       //获取时
+      //       // const hour = date.getHours()
+      //       //获取分
+      //       // const minute = date.getMinutes()
+      //       that.setData({
+      //         dateTime: Y + '年' + M + '月' + D + '日'
+      //       })
+      //       // 调用云函数examNum添加答题数目到数据库exam表
+      //       DB.add({
+      //         data: {
+      //           countNumber: that.data.count,
+      //           date: that.data.dateTime,
+      //           min:that.data.min
+      //         }, success(res) {
+      //           console.log("添加成功", res)
+      //         }, fail(err) {
+      //           console.log("添加失败", err)
+      //         }
+      //       })
+      //     }
+      //   })
     }
+
+    // that.setData({
+    //   count: count,
+    // })
+
   },
 
   //更新页面内容
@@ -378,7 +382,7 @@ Page({
       let meanData = that.data.wordsData.selection
       let audio = JSON.parse(that.data.wordsData.voice).ph_tts_mp3
       let wordID = this.data.wordsData.meanss[0].wordId
-      let selectwordID = this.data.wordsData.selection.map(item=>item.wordId)
+      let selectwordID = this.data.wordsData.selection.map(item => item.wordId)
       that.setData({
         word,
         meanData,
@@ -424,7 +428,7 @@ Page({
 
   //实时更新单选框的状态
   radioEvent: function (e) {
-    // console.log(e);
+    console.log(e);
     var index = e.currentTarget.dataset.index;//获取当前点击的下标
     var wordid = e.currentTarget.dataset.wordid;//获取当前点击的单词id
     var value = this.data.value;
@@ -441,9 +445,17 @@ Page({
       radios: radios,
       value: value,
       wordid,
-      flag:'flag'
+      visible: 'flag',
     });
     console.log(this.data.wordid)
+
+    // 直接点击跳转下一题
+    setTimeout(() => {
+      this.buttonEvent()
+      this.setData({
+        wordid: -1
+      })
+    }, 1000)
   },
 
   //获得答案
@@ -457,7 +469,7 @@ Page({
   },
 
   // 点击喇叭，播放音频
-  audioPlay(){
+  audioPlay() {
     this.audioCtx.play()
   }
 

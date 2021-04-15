@@ -112,8 +112,14 @@
 }
 .test_index .history_index .history_title {
   font-size: 32rpx;
-  margin: 40rpx 0 40rpx 30rpx;
+  margin: 40rpx 30rpx 40rpx 30rpx;
   font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.test_index .history_index .history_title .icon-right {
+  font-size: 45rpx;
 }
 .test_index .history_index .history_item {
   display: flex;
@@ -146,10 +152,6 @@
 .test_index .history_index .history_item .history_reality_data .test_data {
   display: flex;
   align-items: center;
-}
-.test_index .history_index .history_item .history_reality_data .test_data .icon-right {
-  font-size: 38rpx;
-  margin-left: 5rpx;
 }
 .test_index .contact_item {
   display: flex;

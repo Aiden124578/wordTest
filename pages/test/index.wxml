@@ -36,9 +36,9 @@
       <radio-group class="radio-group" bindchange="onClick">
         <view class="radio-group-navigator {{wordid!==wordID&&wordid==meanData[item].wordId?'wrong':''}} {{wordid==meanData[item].wordId&&wordid==wordID?'right':''}}" wx:for='{{[0,1,2,3]}}' wx:key="*this" data-wordid="{{selectwordID[item]}}">
           <radio color="var(--themeColor)" bindtap="radioEvent" data-index="{{index}}" checked="{{radios[item].check}}" value="{{radios[item].value}}" data-wordid="{{selectwordID[item]}}">
-              <view class="pick" bindtap="radioEvent" data-index="{{index}}" checked="{{radios[item].check}}" value="{{radios[item].value}}" data-wordid="{{selectwordID[item]}}">
+              <view class="pick">
               <!-- <view class="pick_word">{{radioname[item]}}</view> -->
-              <view class="word_mean"><text class="visible {{wordid==meanData[item].wordId?flag:''}}">{{radioname[item]}}</text>{{meanData[item].mean}}</view>
+              <view class="word_mean"><text class="visible {{wordid==meanData[item].wordId?visible:''}}">{{radioname[item]}}</text>{{meanData[item].mean}}</view>
             </view>
           </radio>
           <!-- <image src='{{radios[item].imagesrc}}'></image> -->

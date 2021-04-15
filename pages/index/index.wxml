@@ -24,7 +24,7 @@
     <!-- 等级 -->
     <view class="test_rank">
       <view class="rank">
-        <scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%">
+        <scroll-view enhanced show-scrollbar="{{false}}" class="scroll-view_H" scroll-x="true" style="width: 100%">
           <view bindtap="handleClickChange" data-index="1" class="pick_rank {{index==1?'active':''}}">
             <view class="grade">初中</view>
           </view>
@@ -50,19 +50,21 @@
     <!-- 历史记录 -->
     <view class="history_index">
       <!-- 标题 -->
-      <view class="history_title">历史记录</view>
+      <view class="history_title">
+        <view>历史记录</view>
+        <view class="iconfont icon-right"></view>
+      </view>
       <!-- 历史数据 -->
       <!-- 无测试数据隐藏 -->
-      <view wx:if="{{scores==''?true:false}}" class="history_item">
+      <view wx:if="{{scores===''?true:false}}" class="history_item">
         <view class="history_data">暂无历史记录，快去测试吧~</view>
       </view>
       <!-- 有测试数据显示 -->
-      <view wx:if="{{scores==''?false:true}}" class="history_item">
+      <view wx:if="{{scores===''?false:true}}" class="history_item">
         <view class="history_reality_data">
           <view class="test_date">2021年04月</view>
           <view class="test_data">
-            <view class="test_score">平均{{scores}}</view>
-            <view class="iconfont icon-right"></view>
+            <view class="test_score">单词量{{scores}}</view>
           </view>
         </view>
       </view>

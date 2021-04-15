@@ -2,7 +2,7 @@
   <view class="userinfo_index">
     <!-- 背景图片 -->
     <view class="bgc_photo">
-      <image src="../../images/main_pic.png" />
+      <image src="../../images/main_pic.png"/>
     </view>
     <view class="container">
       <view class="userinfo">
@@ -26,22 +26,22 @@
       <view class="rank">
         <scroll-view enhanced show-scrollbar="{{false}}" class="scroll-view_H" scroll-x="true" style="width: 100%">
           <view bindtap="handleClickChange" data-index="1" class="pick_rank {{index==1?'active':''}}">
-            <view class="grade">初中</view>
+            <view class="grade">小学</view>
           </view>
           <view bindtap="handleClickChange" data-index="2" class="pick_rank {{index==2?'active':''}}">
-            <view class="grade">高中</view>
+            <view class="grade">初中</view>
           </view>
           <view bindtap="handleClickChange" data-index="3" class="pick_rank {{index==3?'active':''}}">
-            <view class="grade">大学</view>
+            <view class="grade">高中</view>
           </view>
           <view bindtap="handleClickChange" data-index="4" class="pick_rank {{index==4?'active':''}}">
-            <view class="grade">四级</view>
+            <view class="grade">大学</view>
           </view>
           <view bindtap="handleClickChange" data-index="5" class="pick_rank {{index==5?'active':''}}">
-            <view class="grade">六级</view>
+            <view class="grade">四级</view>
           </view>
           <view bindtap="handleClickChange" data-index="6" class="pick_rank {{index==6?'active':''}}">
-            <view class="grade">高级</view>
+            <view class="grade">六级</view>
           </view>
         </scroll-view>
         <!-- <view class="iconfont icon-right" bindtap="swapNav"></view> -->

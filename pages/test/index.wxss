@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 80rpx 0;
+  margin: 60rpx 0 70rpx 0;
 }
 .words_test .iconfont {
   margin: 10rpx 0 0 20rpx;
@@ -84,12 +84,12 @@
   display: flex;
   align-items: center;
   font-size: 36rpx;
-  margin-top: 50rpx;
+  margin-top: 30rpx;
   border: 2rpx solid var(--themeColor);
-  border-radius: 8rpx;
+  border-radius: 12rpx;
 }
 .radio-group .radio-group-navigator:nth-of-type(1) {
-  margin-top: 0;
+  margin-top: 0rpx;
 }
 .radio-group-navigator image {
   width: 100%;
@@ -138,6 +138,20 @@ radio .wx-radio-input.wx-radio-input-checked {
 }
 .flag {
   display: none;
+}
+.incognize {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 672rpx;
+  height: 80rpx;
+  background-color: var(--themeColor);
+  color: #fff;
+  font-size: 36rpx;
+  border-radius: 12rpx;
+  margin-top: 42rpx;
+  z-index: 999;
 }
 .foot {
   width: 100rpx;

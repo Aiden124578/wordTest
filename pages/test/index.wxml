@@ -44,18 +44,19 @@
           <!-- <image src='{{radios[item].imagesrc}}'></image> -->
         </view>
       </radio-group>
+      <view class="incognize" bindtap="buttonEvent" url="{{url}}">不认识（点此保证正确率）</view>
     </view>
   </view>
-  <view class="next_item">
+  <!-- <view class="next_item">
     <view class="next">
       <image src="../../images/next.png" mode="widthFix"/>   
     </view>
     <view class="next_word">下一题</view>
-  </view>
+  </view> -->
   <!-- 下一题按钮 -->
-  <view class="foot">
+  <!-- <view class="foot">
     <button class="foot-button" style="width:250rpx" bindtap="buttonEvent" url="{{url}}" open-type="redirect" hover-class="other-navigator-hover"></button>
-  </view>
+  </view> -->
 </view>
 <view class="bgc">
   <image src="../../images/background.png" mode="widthFix"/>  

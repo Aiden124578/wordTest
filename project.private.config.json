@@ -23,6 +23,11 @@
           "pathName": "pages/test/index",
           "query": "type=1",
           "scene": null
+        },
+        {
+          "name": "结果",
+          "pathName": "pages/result/index",
+          "scene": null
         }
       ]
     }

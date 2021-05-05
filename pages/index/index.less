@@ -173,36 +173,42 @@
       }
     }
   }
-  // 联系我们
-  .contact_item{
+}
+
+// 联系我们
+.contact_item{
+  position: absolute;
+  bottom: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 32rpx;
+  color: var(--themeColor);
+  z-index: 99999;
+}
+
+// 开始测试
+.test_word{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  bottom: 30rpx;
+  width: 100%;
+  height: 130rpx;
+  z-index: 9999;
+  .start_test{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    font-size: 32rpx;
-    color: var(--themeColor);
-    margin: 80rpx 0;
-  }
-  // 开始测试
-  .test_word{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 20rpx;
-    width: 100%;
-    height: 130rpx;
-    .start_test{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 680rpx;
-      height: 120rpx;
-      font-size: 36rpx;
-      color: #fff;
-      background-color: var(--themeColor);
-      border-radius: 27rpx;
-    }
+    width: 680rpx;
+    height: 120rpx;
+    font-size: 36rpx;
+    color: #fff;
+    background-color: var(--themeColor);
+    border-radius: 27rpx;
   }
 }
 

@@ -2,7 +2,7 @@
   <view class="userinfo_index">
     <!-- 背景图片 -->
     <view class="bgc_photo">
-      <image src="../../images/main_pic.png"/>
+      <image src="../../images/main_pic.png" />
     </view>
     <view class="container">
       <view class="userinfo">
@@ -44,13 +44,12 @@
             <view class="grade">六级</view>
           </view>
         </scroll-view>
-        <!-- <view class="iconfont icon-right" bindtap="swapNav"></view> -->
       </view>
     </view>
     <!-- 历史记录 -->
     <view class="history_index">
       <!-- 标题 -->
-      <view class="history_title">
+      <view class="history_title" bindtap="navResult">
         <view>历史记录</view>
         <view class="iconfont icon-right"></view>
       </view>
@@ -62,18 +61,21 @@
       <!-- 有测试数据显示 -->
       <view wx:if="{{scores===''?false:true}}" class="history_item">
         <view class="history_reality_data">
-          <view class="test_date">2021年04月</view>
+          <view class="test_date">{{newDate}}</view>
           <view class="test_data">
-            <view class="test_score"><text>单词量</text>{{scores}}</view>
+            <view class="test_score">
+              <text>单词量</text>
+              {{scores}}
+            </view>
           </view>
         </view>
       </view>
     </view>
-    <!-- 联系我们 -->
-    <view class="contact_item">V1.0 | 联系我们</view>
-    <!-- 开始测试 -->
-    <view class="test_word">
-      <view class="start_test" bindtap="startTest">开始测试</view>
-    </view>
   </view>
+</view>
+<!-- 联系我们 -->
+  <view class="contact_item">V1.0 | 联系我们</view>
+<!-- 开始测试 -->
+<view class="test_word">
+  <view class="start_test" bindtap="startTest">开始测试</view>
 </view>

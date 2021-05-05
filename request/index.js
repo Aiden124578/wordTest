@@ -5,7 +5,6 @@ export const request = (params) => {
         mask: true,
     });
     ajaxNum++;
-    // const baseUrl = 'http://121.4.250.188:8081';
     const baseUrl = 'https://www.suhongdh.cn:8081'; 
     return new Promise((resolve, reject)=>{
         wx.request({

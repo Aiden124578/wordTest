@@ -1,8 +1,3 @@
-import { request } from "../../request/index.js";
-
-// 获取应用实例
-const app = getApp()
-
 Page({
   data: {
     userInfo: {},
@@ -20,22 +15,22 @@ Page({
     })
   },
   onLoad() {
+    //下拉窗口背景色
+    wx.setBackgroundColor({
+      backgroundColorTop: '#d8e4f4'
+    });
     // 判断用户是否授权
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
       })
     }
-    //下拉窗口背景色
-    wx.setBackgroundColor({
-      backgroundColor: '#fff',
-      backgroundColorTop: '#d8e4f4',
-      backgroundColorBottom: '#fff'
-    });
     // 从缓存中获取测试分数
     let scores = wx.getStorageSync('scores');
+    let newDate = wx.getStorageSync('newDate')
     this.setData({
-      scores
+      scores,
+      newDate
     })
   },
 
@@ -78,4 +73,32 @@ Page({
     })
   },
 
+  // 跳转到结果页面
+  navResult(){
+    wx.navigateTo({
+      url: '../result/index'
+  })
+  },
+
+/**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(ops.target)
+      }
+    return {
+      title: '英语词汇量测试',
+      path: '/pages/index/index', // 路径，传递参数到指定页面。
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
+  }   
 })

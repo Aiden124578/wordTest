@@ -163,25 +163,29 @@
 .test_index .history_index .history_item .history_reality_data .test_score text {
   margin-right: 10rpx;
 }
-.test_index .contact_item {
+.contact_item {
+  position: absolute;
+  bottom: 200rpx;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   font-size: 32rpx;
   color: var(--themeColor);
-  margin: 80rpx 0;
+  z-index: 99999;
 }
-.test_index .test_word {
+.test_word {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  bottom: 20rpx;
+  position: absolute;
+  height: 100%;
+  bottom: 30rpx;
   width: 100%;
   height: 130rpx;
+  z-index: 9999;
 }
-.test_index .test_word .start_test {
+.test_word .start_test {
   display: flex;
   justify-content: center;
   align-items: center;

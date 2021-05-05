@@ -2,13 +2,15 @@
   "pages":[
     "pages/index/index",
     "pages/test/index", 
-    "pages/result/index" 
+    "pages/result/index"  
   ],
   "window":{
-    "backgroundTextStyle":"dark",
+    "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "词汇量测试",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle":"black",
+    "backgroundColorTop":"#fff",
+    "backgroundColorBottom": "#fff"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

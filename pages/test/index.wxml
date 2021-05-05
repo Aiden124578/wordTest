@@ -5,7 +5,7 @@
       <view class="top-group-title">
         <view class="top-group-titleLeft">您正在做测试</view>
         <view class="top-group-titleCenter">{{percent}}%</view>
-        <view class="top-group-titleRight">已完成<text>{{number}}/5</text></view>
+        <view class="top-group-titleRight">已完成<text>{{number}}/50</text></view>
       </view>
       <view class="top-group-progress">
         <progress background-color="#eaeff3" activeColor="var(--themeColor)" percent="{{percent}}" active-mode="forwords" bindactiveend="progressEvent" stroke-width="36rpx" border-radius="10rpx"></progress>
@@ -13,7 +13,6 @@
     </view>
   </view>
   <view class="body">
-    <!-- <view class="words_test" wx:for="{{wordsData}}" wx:key="id">{{item.word}}</view> -->
     <!-- 题目 -->
     <view class="words_test">
       <view>{{word}}</view>
@@ -22,42 +21,22 @@
     <view>
       <audio id="myAudio" autoplay src="{{audio}}"></audio>
     </view>
-    <!-- <view class="words_test">{{src}}</view> -->
-    <!-- <view class="body-title">
-            <view>{{number}}.请找出大图中空缺的部分，使整个大图合理完整。</view>
-          </view>
-          <view class="body-image">
-            <view class="body-image-item">
-              <image src="{{src}}"></image>
-            </view>
-          </view> -->
-    
+    <!-- 选项 -->
     <view class="body-radio">
       <radio-group class="radio-group" bindchange="onClick">
         <view class="radio-group-navigator {{wordid!==wordID&&wordid==meanData[item].wordId?'wrong':''}} {{wordid==meanData[item].wordId&&wordid==wordID?'right':''}}" wx:for='{{[0,1,2,3]}}' wx:key="*this" data-wordid="{{selectwordID[item]}}">
-          <radio color="var(--themeColor)" bindtap="radioEvent" data-index="{{index}}" checked="{{radios[item].check}}" value="{{radios[item].value}}" data-wordid="{{selectwordID[item]}}">
+          <radio disabled="{{disabled}}" color="var(--themeColor)" bindtap="radioEvent" data-index="{{index}}" checked="{{radios[item].check}}" value="{{radios[item].value}}" data-wordid="{{selectwordID[item]}}">
               <view class="pick">
-              <!-- <view class="pick_word">{{radioname[item]}}</view> -->
               <view class="word_mean"><text class="visible {{wordid==meanData[item].wordId?visible:''}}">{{radioname[item]}}</text>{{meanData[item].mean}}</view>
             </view>
           </radio>
-          <!-- <image src='{{radios[item].imagesrc}}'></image> -->
         </view>
       </radio-group>
-      <view class="incognize" bindtap="buttonEvent" url="{{url}}">不认识（点此保证正确率）</view>
+      <!-- <view class="incognize" bindtap="buttonEvent" url="{{url}}">不认识（点此保证正确率）</view> -->
     </view>
   </view>
-  <!-- <view class="next_item">
-    <view class="next">
-      <image src="../../images/next.png" mode="widthFix"/>   
-    </view>
-    <view class="next_word">下一题</view>
-  </view> -->
-  <!-- 下一题按钮 -->
-  <!-- <view class="foot">
-    <button class="foot-button" style="width:250rpx" bindtap="buttonEvent" url="{{url}}" open-type="redirect" hover-class="other-navigator-hover"></button>
-  </view> -->
 </view>
+<!-- 背景图片 -->
 <view class="bgc">
   <image src="../../images/background.png" mode="widthFix"/>  
 </view>

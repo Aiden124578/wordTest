@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="top">
+    <view class="space"></view>
+    <view class="top-col">日期</view>
+    <view class="top-col">词汇量</view>
+    <view class="top-col">测试等级</view>
+    <view class="space"></view>
+  </view>
+  <view class="items" wx:for="{{resultData}}" wx:key="*this">
+    <view class="space"></view>
+    <view class="item-col">{{item.date}}</view>
+    <view class="item-col">{{item.score}}</view>
+    <view class="item-col">{{item.level}}</view>
+  </view>
+</view>

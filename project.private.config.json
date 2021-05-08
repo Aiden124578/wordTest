@@ -25,8 +25,15 @@
           "scene": null
         },
         {
+          "name": "历史记录",
+          "pathName": "pages/record/index",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "结果",
           "pathName": "pages/result/index",
+          "query": "",
           "scene": null
         }
       ]

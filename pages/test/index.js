@@ -14,7 +14,7 @@ Page({
     visible: '', //ABCD的显隐
     value: 0,  //选中选项
     flag: 0,   //判断答题是否结束
-    percent: 1,  //进度
+    percent: 0,  //进度
     number: 1,   //题号
     radioname: ["A", "B", "C", "D"], //选项
     disabled:false, //控制按钮的点击

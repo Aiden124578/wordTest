@@ -76,8 +76,8 @@ Page({
   // 跳转到结果页面
   navResult(){
     wx.navigateTo({
-      url: '../result/index'
-  })
+      url: '../record/index'
+    })
   },
 
 /**

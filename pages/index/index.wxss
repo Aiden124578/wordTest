@@ -192,6 +192,7 @@
   width: 680rpx;
   height: 120rpx;
   font-size: 36rpx;
+  font-weight: 700;
   color: #fff;
   background-color: var(--themeColor);
   border-radius: 27rpx;

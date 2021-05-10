@@ -1,2 +1,41 @@
-<!--pages/result/index.wxml-->
-<text>pages/result/index.wxml</text>
+<view class="result">
+  <!-- 单词量 -->
+  <view class="result-num">
+    <view class="result-num-box">
+      <view class="r-num">{{scores}}</view>
+      <view class="r-title">单词量</view>
+      <view class="r-rusult">快去背背单词吧~~</view>
+    </view>
+  </view>
+  <view class="result-detail">
+    <view class="r-box">
+      <view class="r-title">测试数</view>
+      <view class="r-sum">{{testNum}}</view>
+    </view>
+    <view class="r-box">
+      <view class="r-title">答对数</view>
+      <view class="r-sum">{{rightNum}}</view>
+    </view>
+    <view class="r-box">
+      <view class="r-title">答错数</view>
+      <view class="r-sum">{{errorNum}}</view>
+    </view>
+    <view class="r-box">
+      <view class="r-title">正确率</view>
+      <view class="r-sum">{{rightPersent}}%</view>
+    </view>
+  </view>
+  <!-- words swiper -->
+  <view class="result-swiper">
+    <view class="r-title">哪些单词你不认识？</view>
+    <view class="swiper-box">
+      <view class="word {{flag}}">{{word}}</view>
+      <view class="wordmean {{flags}}">{{wordMean}}</view>
+    </view>
+  </view>
+  <!-- two btn -->
+  <view class="result-btn">
+    <view class="r-back" bindtap="navIndex">返回首页</view>
+    <view class="r-new" bindtap="againTest">重新测试</view>
+  </view>
+</view>

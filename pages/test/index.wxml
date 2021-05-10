@@ -5,7 +5,7 @@
       <view class="top-group-title">
         <view class="top-group-titleLeft">您正在做测试</view>
         <view class="top-group-titleCenter">{{percent}}%</view>
-        <view class="top-group-titleRight">已完成<text>{{number}}/50</text></view>
+        <view class="top-group-titleRight">已完成<text>{{number}}/{{testNum}}</text></view>
       </view>
       <view class="top-group-progress">
         <progress background-color="#eaeff3" activeColor="var(--themeColor)" percent="{{percent}}" active-mode="forwords" bindactiveend="progressEvent" stroke-width="36rpx" border-radius="10rpx"></progress>

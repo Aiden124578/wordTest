@@ -22,7 +22,7 @@ Page({
     let errorData = wx.getStorageSync('errorData');
     let errorMeans = wx.getStorageSync('errorMeans');
     let rightNum = testNum - errorNum
-    let rightPersent = parseInt(rightNum / testNum * 100)
+    let rightPersent = Math.round(rightNum / testNum * 100)
     // 从缓存中获取数据
     this.setData({
       type,
@@ -66,6 +66,12 @@ Page({
   navIndex(){
     wx.redirectTo({
       url:'../index/index'
+    })
+  },
+  // 点击单词不认识跳转页面
+  navWordList(){
+    wx.navigateTo({
+      url:'../wordlist/index'
     })
   },
   /**

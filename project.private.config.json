@@ -35,6 +35,12 @@
           "pathName": "pages/result/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "不认识的单词",
+          "pathName": "pages/wordlist/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

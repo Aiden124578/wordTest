@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/test/index", 
     "pages/result/index",      
-    "pages/record/index"
+    "pages/record/index",
+    "pages/wordlist/index"
   ],
   "window":{
     "backgroundTextStyle":"light",

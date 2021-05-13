@@ -26,7 +26,7 @@
     </view>
   </view>
   <!-- words swiper -->
-  <view class="result-swiper">
+  <view class="result-swiper" bindtap="navWordList">
     <view class="r-title">哪些单词你不认识？</view>
     <view class="swiper-box">
       <view class="word {{flag}}">{{word}}</view>

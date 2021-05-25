@@ -1,11 +1,9 @@
-<view class="container">
+<view class="wronglist">
   <view class="top">
-    <view>不认识的单词</view>
+    <view class="top-col">不认识的单词</view>
   </view>
-  <view class="items" wx:for="{{errorData}}" wx:for-item="item1" wx:key="*this">
-    <view class="wordlist" wx:for="{{errorMeans}}" wx:for-item="item2" wx:key="*this">
-      <view class="item-col">{{item1}}</view>
-      <view class="item-col">{{item2}}</view>
-    </view>
+  <view class="items" wx:for="{{resultData}}" wx:key="*this">
+    <view class="item-col word">{{item.item}}</view>
+    <view class="item-col">{{item.data}}</view>
   </view>
 </view>

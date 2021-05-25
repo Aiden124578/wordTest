@@ -7,6 +7,7 @@ Page({
   onLoad: function (options) {
     // 从缓存中获取数据
     let resultData = wx.getStorageSync('results');
+    // console.log(resultData)
     this.setData({
       resultData
     })
@@ -20,7 +21,14 @@ Page({
       method: "POST",
       data: results
     })
-    console.log(res)
+    let errorData=wx.getStorageSync('errorData')
+    let errorMeans=wx.getStorageSync('errorMeans')
+    let resultData=errorData.map((item,index)=>{
+      return {item,data:errorMeans[index]}
+    })
+    this.setData({
+      resultData
+    })
   },
   /**
    * 用户点击右上角分享

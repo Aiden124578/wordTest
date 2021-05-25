@@ -1,33 +1,38 @@
-.container {
+.wronglist {
   margin: 0;
+  padding: 0;
 }
 .top {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
   height: 100rpx;
+  background-color: #fff;
+  text-align: center;
   border-bottom: 2rpx solid var(--themeColor);
+}
+.top .top-col {
+  width: 100%;
+  line-height: 100rpx;
   font-size: 36rpx;
   color: var(--themeColor);
 }
 .items {
-  box-sizing: border-box;
-}
-.wordlist{
-  display: flex;
-  align-items: center;
   width: 100%;
+  font-size: 30rpx;
   border-bottom: 2rpx solid #ccc;
 }
 .items:last-child {
   border-bottom: none;
 }
 .items .item-col {
-  line-height: 130rpx;
-  font-size: 29rpx;
+  margin:0 30rpx;
+  text-align: left;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
 }
-.space {
-  width: 10%;
+.word{
+  color: var(--themeColor);
 }

@@ -21,6 +21,7 @@ Page({
     let testNum = wx.getStorageSync('testNum');
     let errorData = wx.getStorageSync('errorData');
     let errorMeans = wx.getStorageSync('errorMeans');
+    
     let rightNum = testNum - errorNum
     let rightPersent = Math.round(rightNum / testNum * 100)
     // 从缓存中获取数据

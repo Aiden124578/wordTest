@@ -171,7 +171,7 @@ Page({
       that.setData({
         visible: 'flag'
       })
-      var results = that.data.result.data
+      const results = that.data.result.data
       // 请求结果接口
       const res = await request({
         url: "/words/result",
@@ -198,6 +198,7 @@ Page({
       wx.setStorageSync('errorData', that.data.errorData);  //不认识的单词
       wx.setStorageSync('errorMeans', that.data.errorMeans);  //不认识单词的词意
       wx.setStorageSync('type', that.data.type);  //词汇量等级
+      wx.setStorageSync('results', results);  //结果数据
       //答完所有题目，跳转至词汇量测试结果页面
       wx.redirectTo({ url: '../result/index' })
     }
@@ -215,7 +216,7 @@ Page({
       item.check = false;
     })
     //判断是不是最后一题，最后一题跳转
-    if (number < this.data.testNum) {
+    if (number < that.data.testNum) {
       number = number + 1;
       that.setData({
         wordsData: that.data.resultData[number - 1],
@@ -243,7 +244,7 @@ Page({
       flag = 1;
     }
     //输出结果
-    percent = parseInt((number / this.data.testNum) * 100);
+    percent = parseInt((number / that.data.testNum) * 100);
     that.setData({
       number: number,
       percent: percent,

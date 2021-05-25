@@ -1,28 +1,26 @@
+import { request } from "../../request/index.js";
+
 Page({
   data: {
-    errorData:[], //不认识的单词
-    errorMeans:[], //不认识单词的词意
-    wordData:[]
+    resultData:{} //结果数据
   },
   onLoad: function (options) {
     // 从缓存中获取数据
-    let errorData = wx.getStorageSync('errorData');
-    let errorMeans = wx.getStorageSync('errorMeans');
-    for(let i=0;i<this.data.errorData.length;i++){
-      let wordData = []
-      wordData.word[i] = errorData[i]
-      wordData.wordmean[i] = errorMeans[i]
-      this.setData({
-        wordData
-      })
-    }
+    let resultData = wx.getStorageSync('results');
     this.setData({
-      errorData,
-      errorMeans      
+      resultData
     })
-    console.log(this.data.errorData)
-    console.log(this.data.errorMeans)
-    console.log(this.data.wordData)
+    this.getReslutData()
+  },
+  //获取错误单词的数据
+  async getReslutData(){
+    let results = this.data.resultData
+    const res = await request({
+      url: "/words/errorWords",
+      method: "POST",
+      data: results
+    })
+    console.log(res)
   },
   /**
    * 用户点击右上角分享

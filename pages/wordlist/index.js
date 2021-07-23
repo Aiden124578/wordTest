@@ -2,12 +2,12 @@ import { request } from "../../request/index.js";
 
 Page({
   data: {
-    resultData:{} //结果数据
+    resultData:{}, //结果数据
+    errorWord:[]  //不认识的单词
   },
   onLoad: function (options) {
     // 从缓存中获取数据
-    let resultData = wx.getStorageSync('results');
-    // console.log(resultData)
+    let resultData = wx.getStorageSync('results')
     this.setData({
       resultData
     })
@@ -21,14 +21,10 @@ Page({
       method: "POST",
       data: results
     })
-    let errorData=wx.getStorageSync('errorData')
-    let errorMeans=wx.getStorageSync('errorMeans')
-    let resultData=errorData.map((item,index)=>{
-      return {item,data:errorMeans[index]}
-    })
     this.setData({
-      resultData
+      errorWord:res.data.wordsList
     })
+    // console.log(this.data.errorWord)
   },
   /**
    * 用户点击右上角分享

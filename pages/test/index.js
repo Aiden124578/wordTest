@@ -28,28 +28,6 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'),
-    tabs: [  //导航栏选项卡
-      {
-        id: 0,
-        value: "首页",
-        isActive: true
-      },
-      {
-        id: 1,
-        value: "测试",
-        isActive: false
-      },
-      {
-        id: 2,
-        value: "结果",
-        isActive: false
-      },
-      {
-        id: 3,
-        value: "单词数据",
-        isActive: false
-      }
-    ],
     radios: [  //选项集合
       {
         value: 1,

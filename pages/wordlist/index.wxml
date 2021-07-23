@@ -2,8 +2,8 @@
   <view class="top">
     <view class="top-col">不认识的单词</view>
   </view>
-  <view class="items" wx:for="{{resultData}}" wx:key="*this">
-    <view class="item-col word">{{item.item}}</view>
-    <view class="item-col">{{item.data}}</view>
+  <view class="items" wx:for="{{errorWord}}" wx:key="id">
+    <view class="item-col word">{{item.word}}</view>
+    <view class="item-col" wx:for="{{item.meanss}}" wx:for-item="item2" wx:key="wordId">{{item2.mean}}</view>
   </view>
 </view>

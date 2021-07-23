@@ -17,8 +17,9 @@
 }
 .items {
   width: 100%;
-  font-size: 30rpx;
+  font-size: 32rpx;
   border-bottom: 2rpx solid #ccc;
+  padding: 10rpx 5rpx;
 }
 .items:last-child {
   border-bottom: none;
@@ -26,8 +27,7 @@
 .items .item-col {
   margin:0 30rpx;
   text-align: left;
-  line-height: 60rpx;
-  font-size: 30rpx;
+  line-height: 70rpx;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;

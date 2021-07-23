@@ -12,7 +12,8 @@ Page({
     wordMean:'', //答错单词的词意
     number:0, //控制题目的显示和隐藏
     flag:'', //单词淡出效果
-    flags:'' //词意淡出效果
+    flags:'', //词意淡出效果
+    timer:null //设置定时器
   },
   onLoad: function (options) {
     let type = wx.getStorageSync('type');
@@ -35,10 +36,14 @@ Page({
       errorData,
       errorMeans
     })
+    clearTimeout(this.data.timer)
     this.fadeOut()
-    setInterval(()=>{
+    this.data.timer = setInterval(()=>{
       this.fadeOut()
     },3000)
+  },
+  onUnload(){
+    clearTimeout(this.data.timer)
   },
   fadeOut(){
     if(this.data.number === this.data.errorData.length){
